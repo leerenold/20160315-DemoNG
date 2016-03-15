@@ -1,57 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-
-<!-- Model classes -->
-<script src="Customer.js" type="text/javascript"></script>
-
-<!-- app.js is like the "main" part of the app -->
-<script src="app.js" type="text/javascript"></script>
-
-<!-- Services -->
-<!-- Factories -->
-
-<!-- Controllers -->
-<script src="CustomerFormController.js" type="text/javascript"></script>
-<script src="CustomerTableController.js" type="text/javascript"></script>
-
-<title>Demo NG</title>
-</head>
-<body ng-app="DemoNG">
-
-	<div ng-controller="CustomerFormController">
-	Hello, {{customer.firstName}} {{customer.lastName}}<br/>
-
-	First Name: <input ng-model="customer.firstName"/><br/>
-	Last Name: <input ng-model="customer.lastName"/><br/>
-	Phone Number : <input ng-model="customer.phoneNumber"/><br/>
-	Email : <input ng-model="customer.email" type="email"/><br/>
-	<button id="btnAddCustomer" ng-click="addCustomer()">Add Customer</button>
-	</div>
-	
-	<div ng-controller="CustomerFormController">
-	Hello, {{customer.firstName}} {{customer.lastName}}<br/>
-
-	First Name: <input ng-model="customer.firstName"/><br/>
-	Last Name: <input ng-model="customer.lastName"/><br/>
-	Phone Number : <input ng-model="customer.phoneNumber"/><br/>
-	Email : <input ng-model="customer.email" type="email"/><br/>
-	<button id="btnAddCustomer" ng-click="addCustomer()">Add Customer</button>
-	</div>
-
-	<div ng-controller="CustomerTableController">
-		<table>
-			<tr ng-repeat="cust in customers" >
-				<td>{{cust.firstName}}</td>	
-				<td>{{cust.lastName}}</td>
-				<td>{{cust.phoneNumber}}</td>
-				<td>{{cust.email}}</td>
-			</tr>
-		</table>
-	</div>
+s<div ng-controller="CustomerFormController">
+	Hello, {{customer.firstName}} {{customer.lastName}}<br /> First Name: <input
+		ng-model="customer.firstName" /><br /> Last Name: <input
+		ng-model="customer.lastName" /><br /> Phone Number : <input
+		ng-model="customer.phoneNumber" /><br /> Email : <input
+		ng-model="customer.email" type="email" /><br />
+	<button id="btnAddCustomer" ng-click="addCustomer()">Add
+		Customer</button>
+</div>
 
 
-</body>
-</html>
+
