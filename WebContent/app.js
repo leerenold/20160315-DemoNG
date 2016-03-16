@@ -8,14 +8,14 @@ angular.module("DemoNG", ['ngRoute'])
 	.config(function($routeProvider, $locationProvider) {
 		$routeProvider
 		.when("/", {
-			templateUrl: 'main',
+			templateUrl: 'main.html',
 			// controller: 'MainController'
 		})
 		.when("/CustomerForm", {
-			templateUrl: 'CustomerForm'
+			templateUrl: 'CustomerForm.html'
 		})
 		.when("/CustomerTable", {
-			templateUrl: 'CustomerTable'
+			templateUrl: 'CustomerTable.html'
 		})
 		.otherwise({
 			redirectTo: "/#"

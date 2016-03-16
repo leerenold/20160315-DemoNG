@@ -14,7 +14,6 @@ angular.module("DemoNG").service('CustomerLocalStorageService', function($rootSc
 	}
 	
 	this.deleteCustomer = function(cust) {
-		// TODO-CV - walk through the array and delete this customer (see #splice)
 		// Consider using underscore/lodash for this kind of work
 		if (cust && cust.customerId > 0) {
 			for (var i in this.customers) {
