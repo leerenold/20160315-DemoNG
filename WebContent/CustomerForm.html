@@ -1,9 +1,14 @@
-s<div ng-controller="CustomerFormController">
-	Hello, {{customer.firstName}} {{customer.lastName}}<br /> First Name: <input
-		ng-model="customer.firstName" /><br /> Last Name: <input
-		ng-model="customer.lastName" /><br /> Phone Number : <input
-		ng-model="customer.phoneNumber" /><br /> Email : <input
-		ng-model="customer.email" type="email" /><br />
+<div ng-controller="CustomerFormController">
+
+	<span ng-show="customer.firstName">
+	Hello, {{customer.firstName}} {{customer.lastName}}<br /> 
+	</span>
+	
+	First Name:	<input ng-model="customer.firstName" /><br /> 
+	Last Name: <input ng-model="customer.lastName" /><br /> 
+	Phone Number : <input ng-model="customer.phoneNumber" /><br />
+	Email : <input ng-model="customer.email" type="email" /><br />
+	
 	<button id="btnAddCustomer" ng-click="addCustomer()">Add
 		Customer</button>
 </div>

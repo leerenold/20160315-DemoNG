@@ -1,9 +1,9 @@
-var Customer = function(firstName, lastName, phoneNumber, email) {
+var Customer = function(customerId, firstName, lastName, phoneNumber, email) {
 	this.firstName = firstName || "";
 	this.lastName = lastName || "";
 	this.phoneNumber = phoneNumber || "";
 	this.email = email || "";
-
+	this.customerId = customerId || -1; // -1 is not from DB!
 };
 
 Customer.prototype.getFirstName = function() {
