@@ -7,7 +7,7 @@
 				<th>Phone Number</th>
 				<th>Email</th>
 			</tr>
-			<tr ng-repeat="cust in customers" ng-dblclick="selectWorkingCustomer(cust)" ng-keydown="keyPressed(this, $event)">
+			<tr ng-repeat="cust in customers track by cust.customerId" ng-dblclick="selectWorkingCustomer(cust)" ng-keydown="keyPressed(this, $event)">
 				<td>
 				{{cust.customerId}}
 				</td>
