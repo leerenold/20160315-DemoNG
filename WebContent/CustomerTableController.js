@@ -1,11 +1,11 @@
-angular.module("DemoNG").controller('CustomerTableController', function($rootScope, $scope) {
+angular.module("DemoNG").controller('CustomerTableController', function($rootScope, $scope, CustomerLocalStorageService) {
 		// Do customers belong to the table or to the app?
 		// If they belong to the app, make them a service, otherwise scope them here:
 		//$scope.customers = [];
 		
 		$scope.workingCustomer = new Customer();
 		
-		$scope.customers = $rootScope.customers; // access the global variable (ick)
+		$scope.customers = CustomerLocalStorageService.getCustomers(); // access the global variable (ick)
 		
 		$scope.keyPressed = function(obj, $event) { // TODO-CV Consider using directives instead
 			switch ($event.keyCode) {
