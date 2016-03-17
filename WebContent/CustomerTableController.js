@@ -1,11 +1,29 @@
-angular.module("DemoNG").controller('CustomerTableController', function($rootScope, $scope, CustomerLocalStorageService) {
+angular.module("DemoNG").controller('CustomerTableController', function($rootScope, $scope, CustomerLocalStorageService, CustomerRESTStorageService) {
 		// Do customers belong to the table or to the app?
 		// If they belong to the app, make them a service, otherwise scope them here:
 		//$scope.customers = [];
 		
 		$scope.workingCustomer = new Customer();
 		
-		$scope.customers = CustomerLocalStorageService.getCustomers(); // access the global variable (ick)
+		//$scope.customers = CustomerLocalStorageService.getCustomers(); // access the global variable (ick)
+		$scope.customers = [];
+		
+		//CustomerRESTStorageService.getCustomers();
+		var customerRetrievalPromise = CustomerRESTStorageService.getCustomers();
+		customerRetrievalPromise.then(
+			function(custs) {
+				$scope.customers = custs;
+			}, function(error) {
+				console.log("Error getting customerss: " + error.data);
+				console.log(error);
+			}	
+		);
+		
+		// The asynchronous CustomerRESTStorageService (and others) will 
+		// fire a CustomersRetrievedEvent when customer data has been retrieved.
+//		$rootScope.$on("CustomersRetrievedEvent", function(evt, custs) {
+//			$scope.customers = custs;
+//		});
 		
 		$scope.keyPressed = function(obj, $event) { // TODO-CV Consider using directives instead
 			switch ($event.keyCode) {
