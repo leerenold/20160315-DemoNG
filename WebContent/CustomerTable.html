@@ -43,6 +43,11 @@
 					<input ng-model="workingCustomer.email"/>
 				</span>
 				</td>
+				<td>
+					<span ng-show="isEditing(cust)">
+						<button ng-click="deleteWorkingCustomer()">Delete</button>
+					</span>
+				</td>
 			</tr>
 		</table>
 	</span>
