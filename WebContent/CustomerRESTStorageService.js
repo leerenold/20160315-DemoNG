@@ -42,7 +42,7 @@ angular.module("DemoNG").service('CustomerRESTStorageService', function($rootSco
 	
 	this.getCustomersByLastName = function(lastName) {
 		var deferred = $q.defer();
-		 $http.get("http://localhost:8080/DemoNG/rest/customers/lastName" + lastName)
+		 $http.get("http://localhost:8080/DemoNG/rest/customers/lastName/" + lastName)
 		 	.then(function(response) { // Success - we got the data from the REST server
 		 		deferred.resolve(response.data);
 		 	}, function(error) { // Failure with the HTTP Request

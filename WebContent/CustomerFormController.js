@@ -29,7 +29,7 @@ angular.module("DemoNG").controller('CustomerFormController', function($scope, C
 		// May need to induce a delay here if the REST request comes back to fast
 		// Or just comment it out...
 		$scope.customer = new Customer();
-	}
+	};
 	$scope.findCustomerByLastName = function() {
 		CustomerRESTStorageService.getCustomersByLastName($scope.customer.lastName)
 		.then(function(cust) {
@@ -42,7 +42,29 @@ angular.module("DemoNG").controller('CustomerFormController', function($scope, C
 		// May need to induce a delay here if the REST request comes back to fast
 		// Or just comment it out...
 		$scope.customer = new Customer();
-	}
+	};
+	$scope.updateCustomer = function() {
+		CustomerRESTStorageService.updateCustomer($scope.customer)
+		.then(function(cust) {
+			console.log("Updated customer.");
+			var customerId = $scope.customer.customerId;
+			$scope.clearForm();
+			$scope.customer.customerId = customerId;
+			$scope.findCustomerById();
+		}, function(error) {
+			console.log("Failed to update: ");
+			console.log(error);
+		});
+	};
+	$scope.deleteCustomer = function() {
+		CustomerRESTStorageService.deleteCustomer($scope.customer)
+		.then(function(cust) {
+			$scope.clearForm();
+		}, function(error) {
+			console.log("Failed to delete: ");
+			console.log(error);
+		});
+	};
 	
 	$scope.clearForm = function() {
 		$scope.customer = new Customer();
