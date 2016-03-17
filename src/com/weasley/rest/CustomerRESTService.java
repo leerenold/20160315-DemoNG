@@ -2,13 +2,14 @@ package com.weasley.rest;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
+//import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -30,7 +31,7 @@ public class CustomerRESTService {
 
 	// http://localhost:8080/DemoNG/rest/customers/1234
 	@GET
-	@Path("id: \\d")
+	@Path("{id: \\d+}")
 	public Customer findById(@PathParam("id") Long customerId) {
 		return dao.findById(customerId);
 	}
@@ -41,9 +42,9 @@ public class CustomerRESTService {
 		return dao.findAll();
 	}
 
-	// http://localhost:8080/DemoNG/rest/customers/Weasley
+	// http://localhost:8080/DemoNG/rest/customers/lastName/Weasley
 	@GET
-	@Path("lastName") // Add in regex for names?
+	@Path("/lastName/{lastName}") // Add in regex for names?
 	public List<Customer> findByLastName(@PathParam("lastName") String lastName) {
 		return dao.findByLastName(lastName);
 	}

@@ -22,14 +22,20 @@ angular.module("DemoNG", ['ngRoute'])
 		})
 		// $locationProvider.html5Mode(true);
 	})
-	.run(["$rootScope", "CustomerLocalStorageService", function($rootScope, CustomerLocalStorageService) { // $rootScope is really the "app"
+	.run(["$rootScope", "CustomerLocalStorageService", "CustomerRESTStorageService", 
+	      function($rootScope, CustomerLocalStorageService, CustomerRESTStorageService) { // $rootScope is really the "app"
 		console.log("Started...");
 		
 		$rootScope.$on("CustomerAddedEvent", function(evt, cust) {
 			CustomerLocalStorageService.addCustomer(cust);
 		});
 		
-		
+//		CustomerRESTStorageService.getCustomers();
+//
+//		$rootScope.$on("CustomersRetrievedEvent", function(evt, custs) {
+//			console.log("app js got custs");
+//			console.log(custs);
+//		});
 	}])
 	// .controller(...)
 
