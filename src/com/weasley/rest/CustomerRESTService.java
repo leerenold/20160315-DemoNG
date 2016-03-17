@@ -2,6 +2,7 @@ package com.weasley.rest;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 //import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -55,6 +56,7 @@ public class CustomerRESTService {
 	}
 
 	@DELETE
+	@RolesAllowed("CustomerServiceManager")
 	public Customer delete(Customer customer) {
 		return dao.delete(customer);
 	}

@@ -9,16 +9,21 @@ angular.module("DemoNG").controller('CustomerTableController', function($rootSco
 		$scope.customers = [];
 		
 		//CustomerRESTStorageService.getCustomers();
-		var customerRetrievalPromise = CustomerRESTStorageService.getCustomers();
-		customerRetrievalPromise.then(
-			function(custs) {
-				$scope.customers = custs;
-			}, function(error) {
-				console.log("Error getting customerss: " + error.data);
-				console.log(error);
-			}	
-		);
 		
+		$scope.resetCustomers = function() {
+			CustomerRESTStorageService.getCustomers().then(
+				function(custs) {
+					$scope.customers = custs;
+				}, function(error) {
+					console.log("Error getting customerss: " + error.data);
+					console.log(error);
+				}	
+			);
+		}
+
+		// reset customers on controller load/instantiation
+		$scope.resetCustomers();
+			
 		// The asynchronous CustomerRESTStorageService (and others) will 
 		// fire a CustomersRetrievedEvent when customer data has been retrieved.
 //		$rootScope.$on("CustomersRetrievedEvent", function(evt, custs) {
@@ -44,15 +49,35 @@ angular.module("DemoNG").controller('CustomerTableController', function($rootSco
 		}
 		
 		$scope.saveWorkingCustomer = function() { // TODO-CV Replace with UnderScore/Lodash
-			for (var i in $scope.customers) {
-				var cust = $scope.customers[i];
-				if (cust.customerId == $scope.workingCustomer.customerId) {
-					angular.extend(cust, $scope.workingCustomer);
-					$scope.workingCustomer = new Customer();
-					return;
-				}
-			}
+//			for (var i in $scope.customers) {
+//				var cust = $scope.customers[i];
+//				if (cust.customerId == $scope.workingCustomer.customerId) {
+//					angular.extend(cust, $scope.workingCustomer);
+//					$scope.workingCustomer = new Customer();
+//					return;
+//				}
+//			}
+			CustomerRESTStorageService.updateCustomer($scope.workingCustomer)
+			.then(function(cust) {
+				$scope.resetCustomers();
+			}, function(error) {
+				console.log("Failed to update: ");
+				console.log(error);
+			});
+			$scope.workingCustomer = new Customer();
 		}
+		
+		$scope.deleteWorkingCustomer = function() { // TODO-CV Replace with UnderScore/Lodash
+			CustomerRESTStorageService.deleteCustomer($scope.workingCustomer)
+			.then(function(cust) {
+				$scope.resetCustomers();
+			}, function(error) {
+				console.log("Failed to delete: ");
+				console.log(error);
+			});
+			$scope.workingCustomer = new Customer();
+		}
+		
 		$scope.revertWorkingCustomer = function() {
 			$scope.workingCustomer = new Customer();
 		}

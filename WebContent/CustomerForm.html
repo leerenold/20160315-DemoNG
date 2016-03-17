@@ -4,13 +4,17 @@
 	Hello, {{customer.firstName}} {{customer.lastName}}<br /> 
 	</span>
 	
+	Customer ID:	<input ng-model="customer.customerId" /><br /> 
 	First Name:	<input ng-model="customer.firstName" /><br /> 
 	Last Name: <input ng-model="customer.lastName" /><br /> 
 	Phone Number : <input ng-model="customer.phoneNumber" /><br />
 	Email : <input ng-model="customer.email" type="email" /><br />
 	
-	<button id="btnAddCustomer" ng-click="addCustomer()">Add
-		Customer</button>
+	<button id="btnAddCustomer" ng-click="addCustomer()">Add Customer</button>
+	<button id="btnAddCustomer" ng-click="findCustomerById()">Find By ID</button>
+	<button id="btnAddCustomer" ng-click="updateCustomer()">Update</button>
+	<button id="btnAddCustomer" ng-click="deleteCustomer()">Delete</button>
+	<button id="btnAddCustomer" ng-click="clearForm()">Clear Form</button>
 </div>
 
 

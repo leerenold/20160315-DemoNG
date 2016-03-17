@@ -27,7 +27,15 @@ angular.module("DemoNG", ['ngRoute'])
 		console.log("Started...");
 		
 		$rootScope.$on("CustomerAddedEvent", function(evt, cust) {
-			CustomerLocalStorageService.addCustomer(cust);
+//			CustomerLocalStorageService.addCustomer(cust);
+			CustomerRESTStorageService.addCustomer(cust)
+			.then(function(cust) {
+				console.log("Added: ");
+				console.log(cust);
+			}, function(error) {
+				console.log("Failed to add: ");
+				console.log(error);
+			});
 		});
 		
 //		CustomerRESTStorageService.getCustomers();
